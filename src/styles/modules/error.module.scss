@@ -1,0 +1,24 @@
+@use '@/styles/variables' as *;
+
+.errorScreen {
+  margin: vw(30) auto 0 auto;
+  padding: vw(20);
+  width: fit-content;
+  border: 1px solid cadetblue;
+  border-radius: vw(10);
+  span {
+    display: block;
+    text-align: center;
+    &:first-child {
+      font-size: vw(25);
+      line-height: vw(30);
+      font-weight: 500;
+      margin-bottom: vw(5);
+    }
+    &:last-child {
+      font-size: vw(15);
+      line-height: vw(18);
+      font-style: italic;
+    }
+  }
+}

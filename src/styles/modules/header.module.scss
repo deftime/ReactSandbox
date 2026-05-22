@@ -1,0 +1,8 @@
+@use '@/styles/variables' as *;
+
+header.header {
+  display: flex;
+  height: vw(80);
+  padding: 0 vw(30);
+  border-bottom: 1px solid $bluelight;
+}

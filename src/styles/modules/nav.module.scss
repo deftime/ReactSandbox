@@ -1,0 +1,36 @@
+@use '@/styles/variables' as *;
+@use '@/styles/templates';
+
+nav.nav {
+  display: flex;
+  gap: vw(40);
+  a.navItem {
+    @extend %flexCenter;
+    position: relative;
+    font-size: vw(18);
+    line-height: vw(23);
+    font-weight: 500;
+    color: $bluelight;
+    padding: vw(15) vw(20);
+    &:after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: vw(5);
+      background-color: $bluelight;
+    }
+    &:hover:not(.active) {
+      text-decoration: underline;
+    }
+    &.active {
+      color: $blue;
+      cursor: default;
+      &:after {
+        display: block;
+      }
+    }
+  }
+}

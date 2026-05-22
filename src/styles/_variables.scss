@@ -1,0 +1,40 @@
+$px: 0.052; //1920
+$pxm: 0.2; //500
+
+@function vw($unit) {
+  @return calc(#{$unit} * var(--unit));
+}
+
+$desktop-width: 1920px;
+$mobile-width: 500px;
+
+$font-family: 'Roboto', sans-serif;
+$font-color: #000;
+$font-size: vw(15);
+$line-height: vw(18);
+
+$blue: #6495ed;
+$bluelight: #5f9ea0;
+$aqua: #00ffff;
+$red: #a52a2a;
+$bisque: #ffe4c4;
+$beige: #f5f5dc;
+$orange: #ff7f50;
+$violet: #8a2be2;
+$green: #556b2f;
+
+:root {
+  --unit: #{$px * 1vw};
+}
+
+@media screen and (max-width: $mobile-width) {
+  :root {
+    --unit: #{$pxm * 1vw};
+  }
+}
+
+//@media screen and (min-width: $desktop-width) {
+//  :root {
+//    --unit: 1px;
+//  }
+//}
