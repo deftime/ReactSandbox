@@ -1,0 +1,7 @@
+@use '../variables' as *;
+
+.homePage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vw(20);
+}

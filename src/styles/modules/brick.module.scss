@@ -1,0 +1,29 @@
+@use '../variables' as *;
+
+.brick {
+  width: vw(195);
+  height: auto;
+  padding: vw(30) vw(20);
+  border: vw(2) solid $bluelight;
+  border-radius: vw(15);
+  img {
+    display: block;
+    width: auto;
+    height: vw(90);
+    margin: 0 auto vw(20) auto;
+  }
+  span {
+    display: block;
+    font-size: vw(20);
+    line-height: vw(25);
+    text-align: center;
+  }
+  &.linked {
+    cursor: pointer;
+    transition: 0.5s ease;
+    &:hover {
+      background: azure;
+      box-shadow: 0 vw(8) vw(24) rgba($bluelight, 0.5);
+    }
+  }
+}
