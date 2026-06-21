@@ -1,0 +1,83 @@
+@use '../variables' as *;
+
+.formBox {
+  width: vw(300);
+}
+
+.formTitle {
+  font-size: vw(23);
+  line-height: vw(30);
+  font-weight: 500;
+  margin-bottom: vw(10);
+  text-align: center;
+}
+
+.formDesc {
+  font-size: vw(14);
+  line-height: vw(18);
+  text-align: center;
+  margin-bottom: vw(20);
+}
+
+.inputBlock {
+  margin-bottom: vw(10);
+  input, textarea {
+    font-size: vw(15);
+    line-height: vw(18);
+    padding: vw(10);
+    width: 100%;
+    border: 1px solid $bluelight;
+    border-radius: vw(5);
+    background-color: #fff;
+    &::placeholder {
+      font-family: 'Roboto', sans-serif;
+      opacity: 0.5;
+    }
+    &:focus {
+      outline: none;
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
+  textarea {
+    height: vw(100);
+    resize: none;
+  }
+}
+
+button.submit {
+  display: block;
+  font-size: vw(15);
+  line-height: vw(20);
+  font-weight: 700;
+  color: #fff;
+  padding: vw(10) vw(15);
+  margin: vw(20) auto 0 auto;
+  border: none;
+  border-radius: vw(5);
+  width: fit-content;
+  min-width: vw(100);
+  background-color: $green;
+  cursor: pointer;
+  &.reset {
+    background-color: $red;
+  }
+}
+
+.thankMsg {
+  .thankTitle {
+    font-size: vw(20);
+    line-height: vw(25);
+    text-align: center;
+    margin-bottom: vw(20);
+  }
+  span {
+    display: block;
+    font-size: vw(15);
+    line-height: vw(18);
+    &:nth-child(n+2) {
+      margin-top: vw(5);
+    }
+  }
+}

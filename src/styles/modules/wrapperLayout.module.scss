@@ -1,0 +1,15 @@
+@use '../variables' as *;
+
+.wrapperBox {
+  border: 1px solid $blue;
+  border-radius: vw(15);
+  padding: vw(25);
+  background-color: #fff;
+  width: fit-content;
+  &.wide {
+    width: 100%;
+  }
+  &.bg {
+    background-color: $blue;
+  }
+}

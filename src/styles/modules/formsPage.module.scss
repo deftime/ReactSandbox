@@ -1,0 +1,7 @@
+@use '../variables' as *;
+
+.formsPage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: vw(20);
+}
