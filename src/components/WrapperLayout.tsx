@@ -4,7 +4,7 @@ import cls from '@/styles/modules/wrapperLayout.module.scss';
 
 type WrapperLayoutProps = {
   children: ReactNode
-  className?: string
+  className?: 'wide' | 'bg'
 }
 
 export function WrapperLayout(props: WrapperLayoutProps) {

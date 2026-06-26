@@ -1,0 +1,12 @@
+@use '../variables' as *;
+
+.formReact {
+  position: relative;
+  width: vw(500);
+}
+
+.reset {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

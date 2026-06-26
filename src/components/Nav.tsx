@@ -11,7 +11,7 @@ export function Nav() {
     <nav className={cls.nav}>
       {menu.map((elem)=>{
         return (
-          <NavLink to={elem.url} className={({ isActive }) => isActive ? clsx(cls.navItem, cls.active) : clsx(cls.navItem)}>
+          <NavLink to={elem.url} className={({ isActive }) => isActive ? clsx(cls.navItem, cls.active) : clsx(cls.navItem)} key={elem.id}>
             {elem.title}
           </NavLink>
         )
