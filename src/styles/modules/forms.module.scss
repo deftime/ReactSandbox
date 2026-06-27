@@ -188,14 +188,11 @@ button.submit {
   &.reset {
     background-color: $red;
   }
-}
-
-button.reset {
-  font-size: vw(15);
-  line-height: vw(20);
-  color: $blue;
-  background: none;
-  cursor: pointer;
+  &.load {
+    cursor: not-allowed;
+    background-color: grey;
+    pointer-events: none;
+  }
 }
 
 .thankMsg {

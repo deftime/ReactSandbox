@@ -1,0 +1,47 @@
+@use '../variables' as *;
+
+.popWrapper {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba($blue, 0.5);
+  &.open {
+    display: block;
+  }
+}
+
+.pop {
+  width: fit-content;
+  border-radius: vw(20);
+  background-color: #fff;
+  padding: vw(20) vw(25) vw(35) vw(25);
+  margin: vw(100) auto 0 auto;
+}
+
+.popTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: vw(50);
+  margin-bottom: vw(30);
+  span {
+    font-size: vw(20);
+    line-height: vw(25);
+    font-weight: 500;
+  }
+  .popClose {
+    flex-shrink: 0;
+    margin-left: auto;
+    width: vw(30);
+    height: vw(30);
+    cursor: pointer;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

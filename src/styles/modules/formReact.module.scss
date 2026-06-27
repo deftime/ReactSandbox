@@ -5,8 +5,25 @@
   width: vw(500);
 }
 
-.reset {
+button.reset {
   position: absolute;
   right: 0;
   bottom: 0;
+  font-size: vw(15);
+  line-height: vw(20);
+  color: $blue;
+  background: none;
+  cursor: pointer;
+}
+
+.formData {
+  width: vw(300);
+  .line {
+    &:nth-child(n+2) {
+      margin-top: vw(10);
+    }
+    span:first-child {
+      font-weight: 500;
+    }
+  }
 }
