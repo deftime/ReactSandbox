@@ -1,0 +1,34 @@
+@use '../variables' as *;
+
+.todoApp {
+  display: flex;
+  gap: vw(20);
+}
+
+.side {
+  flex-shrink: 0;
+  width: vw(500);
+  &.details {
+    flex-grow: 1;
+    width: auto;
+  }
+}
+
+.add {
+  border-radius: vw(25);
+  padding: vw(20) vw(25);
+  background-color: #C3DCF0;
+  margin-bottom: vw(20);
+}
+
+.list {
+  border-radius: vw(25);
+  padding: vw(20) vw(25);
+  background-color: $greenlight;
+}
+
+.details {
+  border-radius: vw(25);
+  padding: vw(20) vw(25);
+  background-color: #E6E7EB;
+}
