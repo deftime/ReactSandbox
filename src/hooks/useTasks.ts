@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 
 type TaskType = {
   id: number,
-  isDone: boolean
+  isDone: boolean,
+  isSelected: boolean,
   title: string,
+  desc: string,
 }
 
-export type TaskTypeClear = Omit<TaskType, 'id' | 'isDone'>
+export type TaskTypeClear = Omit<TaskType, 'id' | 'isDone' | 'isSelected'>
 
 export function useTasks() {
   const [tasks, setTasks] = useState<TaskType[]>([]);
+  const [selected, setSelected] = useState<TaskType | null>(null);
 
   useEffect(() => {
     const tasksCurrent = localStorage.getItem('tasks');
@@ -20,7 +23,7 @@ export function useTasks() {
 
   const addTask = (taskData: TaskTypeClear) => {
     const newId = Math.floor(Math.random() * 100);
-    const newTask = { ...taskData, id: newId, isDone: false };
+    const newTask = { ...taskData, id: newId, isDone: false, isSelected: false };
     setTasks([...tasks, newTask]);
     localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
   }
@@ -28,6 +31,7 @@ export function useTasks() {
   const checkTask = (id: number) => {
     const newTasks = tasks.map(task => {
       if (task.id === id) {
+        task.isSelected && setSelected({...task, isDone: !task.isDone});
         return { ...task, isDone: !task.isDone }
       }
       return task;
@@ -42,6 +46,18 @@ export function useTasks() {
     localStorage.setItem('tasks', JSON.stringify(newTasks));
   }
 
-  return { tasks, addTask, checkTask, deleteTask }
+  const selectTask = (id: number) => {
+    const newTasks = tasks.map(task => {
+      if (task.id === id) {
+        task.isSelected ? setSelected(null) : setSelected(task);
+        return { ...task, isSelected: !task.isSelected }
+      } else {
+        return { ...task, isSelected: false }
+      }
+    })
+    setTasks(newTasks);
+  }
+
+  return { tasks, selected, addTask, checkTask, deleteTask, selectTask }
 
 }

@@ -31,6 +31,14 @@
       text-decoration: line-through;
     }
   }
+  &.select {
+    background-color: #fff;
+    border-color: $blue;
+    .tools span:hover img {
+      opacity: 1;
+      filter: none;
+    }
+  }
 }
 
 .checker {

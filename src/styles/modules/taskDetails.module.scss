@@ -1,0 +1,38 @@
+@use '../variables' as *;
+
+.taskDetails {
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: vw(40);
+    .taskTitle {
+      font-size: vw(30);
+      line-height: vw(35);
+      font-weight: 500;
+    }
+    .status {
+      font-size: vw(25);
+      line-height: vw(30);
+      font-weight: 700;
+      color: #fff;
+      padding: vw(7) vw(25);
+      border-radius: vw(100);
+      background-color: $violet;
+    }
+  }
+  .desc {
+    font-size: vw(20);
+    line-height: vw(25);
+    font-weight: 300;
+    width: 70%;
+  }
+  &.done {
+    .taskTitle, .desc {
+      opacity: 0.2;
+    }
+    .status {
+      background-color: $green;
+    }
+  }
+}

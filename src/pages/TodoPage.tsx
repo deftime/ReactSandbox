@@ -3,9 +3,10 @@ import cls from '@/styles/modules/todoPage.module.scss';
 import { useTasks } from "@/hooks/useTasks.ts";
 import { Task } from "@/components/Task.tsx";
 import { FormAddTask } from "@/components/FormAddTask.tsx";
+import { TaskDetails } from "@/components/TaskDetails.tsx";
 
 export function TodoPage() {
-  const { tasks, addTask, checkTask, deleteTask } = useTasks()
+  const { tasks, selected: selectedTask, addTask, checkTask, deleteTask, selectTask } = useTasks()
 
   return (
     <section className={cls.todoApp}>
@@ -16,7 +17,8 @@ export function TodoPage() {
         <div className={cls.list}>
           {tasks.length === 0 && <span className={cls.nope}>No tasks, add any and go!</span>}
           {tasks.map((elem) => (
-            <Task key={elem.id} id={elem.id} name={elem.title} isDone={elem.isDone} onCheck={
+            <Task key={elem.id} id={elem.id} name={elem.title} isDone={elem.isDone} isSelected={elem.isSelected}
+              onCheck={
               (e) => {
                 e.stopPropagation();
                 checkTask(elem.id);
@@ -26,11 +28,19 @@ export function TodoPage() {
                 e.stopPropagation();
                 deleteTask(elem.id);
               }
-            } />
+            }
+            onSelect={
+              () => selectTask(elem.id)
+            }
+            />
           ))}
         </div>
       </div>
-      <div className={clsx(cls.side, cls.details)}></div>
+      <div className={clsx(cls.side, cls.details)}>
+        {selectedTask && (
+          <TaskDetails id={selectedTask.id} title={selectedTask.title} desc={selectedTask.desc} isDone={selectedTask.isDone} />
+        )}
+      </div>
     </section>
   )
 }

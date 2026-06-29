@@ -7,13 +7,15 @@ type TaskProps = {
   id: number
   name: string
   isDone: boolean
+  isSelected: boolean
   onCheck: (e: MouseEvent<HTMLElement>) => void
   onDelete: (e: MouseEvent<HTMLElement>) => void
+  onSelect: () => void
 }
 
 export function Task(props: TaskProps) {
   return (
-    <div className={clsx(cls.task, props.isDone && cls.done)} data-id={props.id} onClick={()=> console.log('Task click!')}>
+    <div className={clsx(cls.task, props.isDone && cls.done, props.isSelected && cls.select)} data-id={props.id} onClick={props.onSelect}>
       <div className={cls.checker} onClick={props.onCheck}></div>
       <div className={cls.name}>{props.name}</div>
       <div className={cls.tools}>
