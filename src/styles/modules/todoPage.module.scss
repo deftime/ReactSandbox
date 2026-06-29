@@ -23,8 +23,15 @@
 
 .list {
   border-radius: vw(25);
-  padding: vw(20) vw(25);
+  padding: vw(30);
   background-color: $greenlight;
+  .nope {
+    font-size: vw(18);
+    line-height: vw(20);
+    color: #fff;
+    display: block;
+    text-align: center;
+  }
 }
 
 .details {

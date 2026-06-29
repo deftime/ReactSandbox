@@ -61,6 +61,12 @@
     background-position: right vw(15) center;
     background-size: vw(12);
   }
+  label {
+    display: block;
+    font-size: vw(15);
+    line-height: vw(20);
+    margin-bottom: vw(5);
+  }
 
   &.inputRadio {
     display: flex;
