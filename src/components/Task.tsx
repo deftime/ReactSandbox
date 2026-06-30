@@ -2,6 +2,7 @@ import type { MouseEvent } from "react";
 import clsx from "clsx";
 import cls from '@/styles/modules/task.module.scss';
 import closeIcon from '@/assets/close.svg';
+import editIcon from '@/assets/edit.svg';
 
 type TaskProps = {
   id: number
@@ -10,6 +11,7 @@ type TaskProps = {
   isSelected: boolean
   onCheck: (e: MouseEvent<HTMLElement>) => void
   onDelete: (e: MouseEvent<HTMLElement>) => void
+  onEdit: (e: MouseEvent<HTMLElement>) => void
   onSelect: () => void
 }
 
@@ -19,7 +21,8 @@ export function Task(props: TaskProps) {
       <div className={cls.checker} onClick={props.onCheck}></div>
       <div className={cls.name}>{props.name}</div>
       <div className={cls.tools}>
-        <span onClick={props.onDelete}><img src={closeIcon} alt=""/></span>
+        <span onClick={props.onEdit}><img src={editIcon} alt="" title="Edit"/></span>
+        <span onClick={props.onDelete}><img src={closeIcon} alt="" title="Delete"/></span>
       </div>
     </div>
   )
