@@ -1,6 +1,6 @@
 import {type SubmitEvent, useState} from "react";
 import clsx from "clsx";
-import cls from '@/styles/modules/forms.module.scss';
+import cls from '@/styles/forms/forms.module.scss';
 
 type FormSimpleProps = {
   title?: string

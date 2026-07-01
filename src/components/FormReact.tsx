@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import cls from "@/styles/modules/forms.module.scss";
-import clsSpec from "@/styles/modules/formReact.module.scss";
+import cls from "@/styles/forms/forms.module.scss";
+import clsSpec from "@/styles/forms/formReact.module.scss";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import { PopupLayout } from "@/components/PopupLayout.tsx";

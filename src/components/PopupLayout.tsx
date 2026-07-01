@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import type { ReactNode } from "react";
 import closeIcon from '@/assets/close.svg';
 import clsx from "clsx";
-import cls from '@/styles/modules/popupLayout.module.scss';
+import cls from '@/styles/layouts/popupLayout.module.scss';
 
 type PopupLayoutProps = {
   title?: string

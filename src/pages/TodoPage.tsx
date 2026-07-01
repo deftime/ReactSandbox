@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import cls from '@/styles/modules/todoPage.module.scss';
+import cls from '@/styles/pages/todoPage.module.scss';
 import { useTasks } from "@/hooks/useTasks.ts";
 import { Task } from "@/components/Task.tsx";
 import { FormAddTask } from "@/components/FormAddTask.tsx";

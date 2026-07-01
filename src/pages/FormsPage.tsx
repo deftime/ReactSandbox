@@ -1,7 +1,7 @@
 import { WrapperLayout } from "@/components/WrapperLayout.tsx";
 import { FormSimple } from "@/components/FormSimple.tsx";
 import { FormReact } from "@/components/FormReact.tsx";
-import cls from '@/styles/modules/formsPage.module.scss';
+import cls from '@/styles/pages/formsPage.module.scss';
 
 export function FormsPage() {
   return (

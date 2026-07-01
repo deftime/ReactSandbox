@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Brick } from "@/components/Brick.tsx";
-import cls from '@/styles/modules/homePage.module.scss';
+import cls from '@/styles/pages/homePage.module.scss';
 
 export function HomePage() {
   const navigate = useNavigate();
