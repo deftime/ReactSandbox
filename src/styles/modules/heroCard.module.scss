@@ -1,0 +1,52 @@
+@use '../variables' as *;
+
+.hero {
+  display: flex;
+  gap: vw(20);
+  padding: vw(20);
+  border: vw(5) solid #fff;
+  border-radius: vw(15);
+  background-color: $greenlight;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  .side:first-child {
+    flex-shrink: 0;
+    width: vw(150);
+  }
+  .side:last-child {
+    flex-grow: 1;
+  }
+  .ava {
+    width: vw(150);
+    height: vw(150);
+    border: vw(8) solid #fff;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .name {
+    font-size: vw(25);
+    line-height: vw(30);
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-top: vw(15);
+  }
+  .line {
+    font-size: vw(15);
+    line-height: vw(20);
+    font-weight: 500;
+    padding: vw(10) vw(15);
+    border-radius: vw(5);
+    background-color: #fff;
+    width: vw(300);
+    &:nth-child(n+2) {
+      margin-top: vw(5);
+    }
+  }
+}
