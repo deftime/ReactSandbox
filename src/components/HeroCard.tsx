@@ -21,11 +21,11 @@ export function HeroCard(props: HeroCardProps) {
         <div className={cls.name}>{props.name}</div>
       </div>
       <div className={cls.side}>
-        <div className={cls.line}>Race: {props.race}</div>
-        <div className={cls.line}>Gender: {props.gender}</div>
-        <div className={cls.line}>Height: {props.height}</div>
-        <div className={cls.line}>Weight: {props.weight}</div>
-        <div className={cls.line}>Planet: {props.planet}</div>
+        <div className={cls.line}><span>Race:</span> {props.race}</div>
+        <div className={cls.line}><span>Gender:</span> {props.gender}</div>
+        <div className={cls.line}><span>Height:</span> {props.height}</div>
+        <div className={cls.line}><span>Weight:</span> {props.weight}</div>
+        <div className={cls.line}><span>Planet:</span> {props.planet}</div>
       </div>
     </div>
   )

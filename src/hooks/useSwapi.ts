@@ -3,8 +3,16 @@ import useSWR from "swr";
 import type { hero } from "@/types/swapiData.ts";
 
 export function useSwapi() {
-  const { data: heroes, isLoading } = useSWR('people/', () => swapi.getPeople());
-  const { data: dataArr, mutate: dataRefresh } = useSWR('api/', () => swapi.getData(["https://swapi.info/api/species/2"]));
+  const { data: heroesRaw, isLoading } = useSWR('people/', () => swapi.getPeople());
+  const { data: racePlanet, isLoading: rpLoading } = useSWR('race-planet', () => swapi.getRacePlanet());
+  let heroes: Array<hero & {id: number}> = [];
+
+  if ((!isLoading && !rpLoading) && heroesRaw && racePlanet) {
+    const id = Math.floor(Math.random() * 100);
+    heroes = heroesRaw.map((hero, index) => {
+      return { id, ...hero, homeworld: racePlanet[index].planet, species: [racePlanet[index].race] }
+    })
+  }
 
   //const getHero = (url: string) => {
     // Запускаем при нажатии на карточку

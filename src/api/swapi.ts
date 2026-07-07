@@ -5,6 +5,7 @@ const BASE_URL = 'https://swapi.info/api/';
 type swapiType = {
   getPeople: () => Promise< hero[] >
   getData: (url: string[]) => Promise< unknown[] >
+  getRacePlanet: () => Promise<{ race: string, planet: string }[] | undefined>
 }
 
 export const swapi: swapiType = {
@@ -12,10 +13,21 @@ export const swapi: swapiType = {
     const res = await fetch(`${BASE_URL}people/`);
     return await res.json();
   },
-  getData: async (url: string[]) => {
+  getData: async (url) => {
     const res = await Promise.all(
       url.map(url => {
         fetch(url).then(resp => resp.json())
+      })
+    )
+    return res;
+  },
+  getRacePlanet: async () => {
+    const heroes = await swapi.getPeople();
+    const res = await Promise.all(
+      heroes.map(async (hero)=> {
+        const planet = await fetch(hero.homeworld).then(rez => rez.json());
+        const race = hero.species[0] ? await fetch(hero.species[0]).then(rez => rez.json()) : { name: 'Human' };
+        return { race: race.name, planet: planet.name }
       })
     )
     return res;

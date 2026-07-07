@@ -45,6 +45,9 @@
     border-radius: vw(5);
     background-color: #fff;
     width: vw(300);
+    span {
+      color: $bluelight;
+    }
     &:nth-child(n+2) {
       margin-top: vw(5);
     }
