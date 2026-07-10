@@ -7,13 +7,14 @@ type HeroCardProps = {
   height: string
   weight: string
   planet: string
+  onOpen: () => void
 }
 
 export function HeroCard(props: HeroCardProps) {
   const avaImg = `/img/heroes/${props.name}_face.jpg`;
 
   return (
-    <div className={cls.hero}>
+    <div className={cls.hero} onClick={props.onOpen}>
       <div className={cls.side}>
         <div className={cls.ava}>
           <img src={avaImg} alt="hero_ava"/>

@@ -1,0 +1,70 @@
+@use '../variables' as *;
+
+.heroDetails {
+  display: grid;
+  grid-template-columns: vw(250) vw(250) vw(250);
+  grid-template-rows: vw(250) vw(250);
+  gap: vw(15);
+}
+
+.pic {
+  border-radius: vw(10);
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.details {
+  grid-column: span 2;
+  border-radius: vw(10);
+  background-color: $beige;
+  padding: vw(15);
+  .line {
+    font-size: vw(16);
+    line-height: vw(20);
+    span {
+      font-weight: 500;
+      opacity: 0.5;
+    }
+    &:nth-child(n+2) {
+      margin-top: vw(18);
+    }
+  }
+}
+
+.data {
+  font-size: vw(14);
+  line-height: vw(20);
+  text-align: center;
+  color: #fff;
+  border-radius: vw(10);
+  padding: vw(10) vw(15);
+  .title {
+    font-size: vw(16);
+    font-weight: 700;
+    border-bottom: 1px solid #fff;
+    padding-bottom: vw(10);
+    margin-bottom: vw(10);
+  }
+  span {
+    display: block;
+    &:nth-child(n+2) {
+      margin-top: vw(3);
+    }
+  }
+}
+
+.films {
+  background-color: $bluelight;
+}
+
+.ships {
+  background-color: $red;
+}
+
+.transports {
+  background-color: $green;
+}

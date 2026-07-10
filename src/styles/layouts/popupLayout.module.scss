@@ -16,6 +16,7 @@
 
 .pop {
   width: fit-content;
+  min-width: vw(300);
   border-radius: vw(20);
   background-color: #fff;
   padding: vw(20) vw(25) vw(35) vw(25);
@@ -27,10 +28,10 @@
   justify-content: space-between;
   align-items: center;
   gap: vw(50);
-  margin-bottom: vw(30);
+  margin-bottom: vw(20);
   span {
-    font-size: vw(20);
-    line-height: vw(25);
+    font-size: vw(25);
+    line-height: vw(30);
     font-weight: 500;
   }
   .popClose {

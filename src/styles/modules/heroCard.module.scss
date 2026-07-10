@@ -8,6 +8,8 @@
   border-radius: vw(15);
   background-color: $greenlight;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: 0.5s ease;
+  cursor: pointer;
   .side:first-child {
     flex-shrink: 0;
     width: vw(150);
@@ -23,6 +25,7 @@
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.12);
     overflow: hidden;
+    transition: 0.5s ease;
     img {
       width: 100%;
       height: 100%;
@@ -50,6 +53,13 @@
     }
     &:nth-child(n+2) {
       margin-top: vw(5);
+    }
+  }
+  &:hover {
+    border-color: $bluelight;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    .ava {
+      border-width: vw(1);
     }
   }
 }

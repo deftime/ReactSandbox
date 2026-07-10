@@ -6,6 +6,7 @@ type swapiType = {
   getPeople: () => Promise< hero[] >
   getData: (url: string[]) => Promise< unknown[] >
   getRacePlanet: () => Promise<{ race: string, planet: string }[] | undefined>
+  getHero: (url: string) => Promise< hero >
 }
 
 export const swapi: swapiType = {
@@ -31,5 +32,9 @@ export const swapi: swapiType = {
       })
     )
     return res;
+  },
+  getHero: async (url: string) => {
+    const res = await fetch(url);
+    return await res.json()
   }
 }
