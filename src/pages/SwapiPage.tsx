@@ -7,18 +7,20 @@ import { PopupLayout } from "@/components/PopupLayout.tsx";
 import { HeroDetails } from "@/components/HeroDetails.tsx";
 
 export function SwapiPage() {
-  const { heroes, hero, getHero, heroLoading, isLoading } = useSwapi();
+  const { heroes, hero, getHero, heroLoading, heroesLoading } = useSwapi();
   const [ isOpen, setOpen ] = useState<boolean>(false);
+
+  console.log(heroes);
 
   return (
     <>
       <section className={cls.swapiPage}>
-        {isLoading && <Loader />}
-        {(!isLoading && heroes) &&
+        {heroesLoading && <Loader />}
+        {(!heroesLoading && heroes) &&
           heroes.map((elem) => <HeroCard
             key={elem.id}
             name={elem.name}
-            race={elem.species[0] ?? 'Human'}
+            race={elem.species}
             gender={elem.gender}
             height={elem.height}
             weight={elem.mass}
@@ -30,7 +32,7 @@ export function SwapiPage() {
           />)}
       </section>
       {isOpen && (
-        <PopupLayout isOpen title={hero.name} onClose={()=> setOpen(false)}>
+        <PopupLayout isOpen title={heroLoading ? 'Loading...' : hero.name} onClose={()=> setOpen(false)}>
           {heroLoading && <Loader />}
           {!heroLoading && <HeroDetails
             name={hero.name}

@@ -1,4 +1,4 @@
-export interface hero {
+export interface Hero {
   name:       string;
   height:     string;
   mass:       string;
@@ -17,7 +17,7 @@ export interface hero {
   url:        string;
 }
 
-export interface homeworld {
+export interface Planet {
   name:            string;
   rotation_period: string;
   orbital_period:  string;
@@ -32,4 +32,28 @@ export interface homeworld {
   created:         string;
   edited:          string;
   url:             string;
+}
+
+export interface Race {
+  name:             string;
+  classification:   string;
+  designation:      string;
+  average_height:   string;
+  skin_colors:      string;
+  hair_colors:      string;
+  eye_colors:       string;
+  average_lifespan: string;
+  homeworld:        string;
+  language:         string;
+  people:           string[];
+  films:            string[];
+  created:          string;
+  edited:           string;
+  url:              string;
+}
+
+export interface RacePlanet {
+  id: string
+  race: string
+  planet: string
 }
