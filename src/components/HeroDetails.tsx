@@ -22,12 +22,12 @@ export function HeroDetails(props: HeroDetailsProps) {
             <img src={`/img/heroes/${singleData.name}.jpg`} alt=""/>
           </div>
           <div className={cls.details}>
-            <div className={cls.line}><span>Race: </span>{singleData.race}</div>
+            <div className={cls.line}><span>Race: </span>{singleData.species}</div>
             <div className={cls.line}><span>Gender: </span>{singleData.gender}</div>
             <div className={cls.line}><span>Height: </span>{singleData.height}</div>
-            <div className={cls.line}><span>Mass: </span>{singleData.weight}</div>
-            <div className={cls.line}><span>Birth year: </span>{singleData.year}</div>
-            <div className={cls.line}><span>Native planet: </span>{singleData.planet}</div>
+            <div className={cls.line}><span>Mass: </span>{singleData.mass}</div>
+            <div className={cls.line}><span>Birth year: </span>{singleData.birth_year}</div>
+            <div className={cls.line}><span>Native planet: </span>{singleData.homeworld}</div>
           </div>
           <div className={clsx(cls.data, cls.films)}>
             <div className={cls.title}>Films:</div>

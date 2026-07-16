@@ -1,4 +1,5 @@
 import type { Hero, Planet, Race, RacePlanet } from "@/types/swapiData.ts";
+import { getIdFormUrl } from "@/utils/getIdFormUrl.ts";
 
 const BASE_URL = 'https://swapi.info/api/';
 
@@ -7,7 +8,7 @@ type swapiType = {
   getPlanets: () => Promise< Planet[] >
   getRaces: () => Promise< Race[] >
   getData: (url: string[]) => Promise< unknown[] >
-  getSingleData: (url: string | null) => Promise< unknown >
+  getSingleData: (url: string | null) => Promise< Hero | Planet | Race >
   getRacePlanet: () => Promise< RacePlanet[] | undefined>
 }
 
@@ -42,8 +43,7 @@ export const swapi: swapiType = {
     const heroes = await swapi.getPeople();
     const res = await Promise.all(
       heroes.map(async (hero)=> {
-        const url = hero.url;
-        const id = url.slice(url.lastIndexOf('/') + 1);
+        const id = getIdFormUrl(hero.url);
         const planet = await fetch(hero.homeworld).then(rez => rez.json());
         const race = hero.species[0] ? await fetch(hero.species[0]).then(rez => rez.json()) : { name: 'Human' };
         return { id, race: race.name, planet: planet.name }

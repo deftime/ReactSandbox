@@ -1,24 +1,26 @@
 import useSWR from "swr";
-import { swapi } from "@/api/swapi.ts";
 import type { Hero } from "@/types/swapiData.ts";
+import { swapi } from "@/api/swapi.ts";
+import { getIdFormUrl } from "@/utils/getIdFormUrl.ts";
 
 export function useSwapi(url: string | null = null) {
   const { data: heroesRaw, isLoading: heroesLoading } = useSWR('people/', () => swapi.getPeople());
   const { data: planetsRaw, isLoading: planetsLoading } = useSWR('planets/', () => swapi.getPlanets());
   const { data: racesRaw, isLoading: racesLoading } = useSWR('species/', () => swapi.getRaces());
-  const { data: singleData, isLoading: dataLoading } = useSWR(url, () => swapi.getSingleData(url));
+  const { data: singleDataRaw, isLoading: dataLoading } = useSWR(url, () => swapi.getSingleData(url));
 
   // Выше мы получаем отдельно всех персонажей, расы и планеты.
   // Дальше мы создаем и готовим масив персонажей, включив в него уже готовые полученые даныне про Расу и Планету.
 
   let heroes: Array<Omit<Hero, 'species'> & {id: string, species: string}> = [];
+  let singleData: Omit<Hero, 'species'> & {id: string, species: string} | undefined = undefined;
 
-  const isLoading = heroesLoading || planetsLoading || racesLoading;
+  const isLoading = heroesLoading || planetsLoading || racesLoading || dataLoading;
+  const planetRacesReady = !!planetsRaw && !!racesRaw;
 
-  if (!isLoading && heroesRaw && planetsRaw && racesRaw) {
+  if (!isLoading && heroesRaw && planetRacesReady) {
     heroes = heroesRaw.map(hero => {
-      const url = hero.url;
-      const id = url.slice(url.lastIndexOf('/') + 1);
+      const id = getIdFormUrl(hero.url);
       return {
         id,
         ...hero,
@@ -26,6 +28,17 @@ export function useSwapi(url: string | null = null) {
         species: racesRaw.find(race => race.url === hero.species[0])?.name ?? 'Human'
       }
     })
+  }
+
+  // Готовим отдельного персонажа. Но далее мы можем готвоить и другую сущность (Планету, Расу, Трансопорт...).
+  if (!isLoading && singleDataRaw && 'gender' in singleDataRaw && planetRacesReady) {
+    const id = getIdFormUrl(singleDataRaw.url);
+    singleData = {
+      id,
+      ...singleDataRaw,
+      homeworld: planetsRaw.find(planet => planet.url === singleDataRaw.homeworld)?.name ?? '',
+      species: racesRaw.find(race => race.url === singleDataRaw.species[0])?.name ?? 'Human'
+    }
   }
 
 
