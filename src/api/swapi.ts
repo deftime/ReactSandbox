@@ -7,8 +7,8 @@ type swapiType = {
   getPlanets: () => Promise< Planet[] >
   getRaces: () => Promise< Race[] >
   getData: (url: string[]) => Promise< unknown[] >
+  getSingleData: (url: string | null) => Promise< unknown >
   getRacePlanet: () => Promise< RacePlanet[] | undefined>
-  getHero: (url: string) => Promise< Hero >
 }
 
 export const swapi: swapiType = {
@@ -32,7 +32,12 @@ export const swapi: swapiType = {
     )
     return res;
   },
-  // Слишком перегружена, по два запроса на КАЖДОГО героя!
+  getSingleData: async (url) => {
+    if (!url) return;
+    const res = await fetch(url);
+    return await res.json()
+  },
+  // Вариант получение Расы и Планеты. Слишком перегружен, по два запроса на КАЖДОГО героя!
   getRacePlanet: async () => {
     const heroes = await swapi.getPeople();
     const res = await Promise.all(
@@ -45,9 +50,5 @@ export const swapi: swapiType = {
       })
     )
     return res;
-  },
-  getHero: async (url: string) => {
-    const res = await fetch(url);
-    return await res.json()
   }
 }

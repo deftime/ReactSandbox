@@ -2,11 +2,12 @@ import useSWR from "swr";
 import { swapi } from "@/api/swapi.ts";
 import type { Hero } from "@/types/swapiData.ts";
 
-export function useSwapi() {
+export function useSwapi(url: string | null = null) {
   const { data: heroesRaw, isLoading: heroesLoading } = useSWR('people/', () => swapi.getPeople());
   const { data: planetsRaw, isLoading: planetsLoading } = useSWR('planets/', () => swapi.getPlanets());
   const { data: racesRaw, isLoading: racesLoading } = useSWR('species/', () => swapi.getRaces());
-  const { data: hero, isValidating: heroLoading, mutate: heroRefresh } = useSWR('hero', () => swapi.getHero('https://swapi.info/api/people/1'));
+  const { data: singleData, isLoading: dataLoading } = useSWR(url, () => swapi.getSingleData(url));
+
   // Выше мы получаем отдельно всех персонажей, расы и планеты.
   // Дальше мы создаем и готовим масив персонажей, включив в него уже готовые полученые даныне про Расу и Планету.
 
@@ -21,19 +22,14 @@ export function useSwapi() {
       return {
         id,
         ...hero,
-        homeworld: planetsRaw.find(planet => planet.url === hero.homeworld)?.name,
+        homeworld: planetsRaw.find(planet => planet.url === hero.homeworld)?.name ?? '',
         species: racesRaw.find(race => race.url === hero.species[0])?.name ?? 'Human'
       }
     })
   }
 
-  const getHero = (url: string, race: string, planet: string) => {
-    heroRefresh(()=> swapi.getHero(url), { revalidate: false })
-      .then(data => {
-        console.log(data);
-    })
-  }
 
+  // ВАРИАНТ. Лишний стейт ввнутри хука.
   // Списки - возвращаем полученный массив
   // Отдельный персонаж (или другая сущность) - возвращаем функцию-геттер
   // Геттер принимает линк и ставит его в стейт
@@ -41,9 +37,10 @@ export function useSwapi() {
   // Геттер ждет и получает данные
   // Обрабатывает их и возвращает вместе с Loading
 
+  // ВАРИАНТ. Получаем данные, которые могут быть не нужны.
   // Получаем массивы всех сущностей отдельными SWR
   // Собираем нужные обекты через функции, используя все полученные массивы
 
 
-  return { heroes, hero, getHero, heroesLoading, heroLoading }
+  return { heroes, singleData, heroesLoading, dataLoading }
 }

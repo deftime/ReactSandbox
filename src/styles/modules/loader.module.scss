@@ -10,4 +10,12 @@
     width: vw(50);
     height: auto;
   }
+  &.absolute {
+    position: absolute;
+  }
+  &.big {
+    img {
+      width: vw(100);
+    }
+  }
 }

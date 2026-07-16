@@ -1,6 +1,7 @@
 @use '../variables' as *;
 
 .heroDetails {
+  position: relative;
   display: grid;
   grid-template-columns: vw(250) vw(250) vw(250);
   grid-template-rows: vw(250) vw(250);
