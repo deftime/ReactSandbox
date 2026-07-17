@@ -10,14 +10,13 @@ type HeroDetailsProps = {
 export function HeroDetails(props: HeroDetailsProps) {
   const { singleData, dataLoading } = useSwapi(props.url);
 
-  console.log(singleData);
+  //console.log(singleData);
 
   return (
     <div className={cls.heroDetails}>
-      {dataLoading ?
-        (
-          <Loader variant={'absolute'} size={'big'} />
-        ) : ( <>
+      {dataLoading &&  <Loader variant={'absolute'} size={'big'} />}
+      {!dataLoading && singleData && (
+        <>
           <div className={cls.pic}>
             <img src={`/img/heroes/${singleData.name}.jpg`} alt=""/>
           </div>
@@ -41,8 +40,8 @@ export function HeroDetails(props: HeroDetailsProps) {
             <div className={cls.title}>Transport:</div>
             {singleData.vehicles.length ? singleData.vehicles.map((elem) => <span key={elem}>{elem}</span>) : <span>-none-</span>}
           </div>
-        </> )
-      }
+        </>
+      )}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import type { Hero, Planet, Race, RacePlanet } from "@/types/swapiData.ts";
+import type { Film, Hero, Planet, Race, RacePlanet, Starship, Transport } from "@/types/swapiData.ts";
 import { getIdFormUrl } from "@/utils/getIdFormUrl.ts";
 
 const BASE_URL = 'https://swapi.info/api/';
@@ -7,7 +7,7 @@ type swapiType = {
   getPeople: () => Promise< Hero[] >
   getPlanets: () => Promise< Planet[] >
   getRaces: () => Promise< Race[] >
-  getData: (url: string[]) => Promise< unknown[] >
+  getData: (url: string[]) => Promise< Film[] | Transport[] | Starship[] >
   getSingleData: (url: string | null) => Promise< Hero | Planet | Race >
   getRacePlanet: () => Promise< RacePlanet[] | undefined>
 }
@@ -25,10 +25,10 @@ export const swapi: swapiType = {
     const res = await fetch(`${BASE_URL}species/`);
     return await res.json();
   },
-  getData: async (url) => {
+  getData: async (urls) => {
     const res = await Promise.all(
-      url.map(url => {
-        fetch(url).then(resp => resp.json())
+      urls.map(url => {
+        return fetch(url).then(resp => resp.json())
       })
     )
     return res;
@@ -38,7 +38,7 @@ export const swapi: swapiType = {
     const res = await fetch(url);
     return await res.json()
   },
-  // Вариант получение Расы и Планеты. Слишком перегружен, по два запроса на КАЖДОГО героя!
+  // Вариант получения Расы и Планеты. Слишком перегружен, по два запроса на КАЖДОГО героя!
   getRacePlanet: async () => {
     const heroes = await swapi.getPeople();
     const res = await Promise.all(
