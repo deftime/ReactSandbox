@@ -29,16 +29,20 @@ function arrReducer(state: ArrReducerState, action: ArrReducerAction) {
 }
 
 export function useSwapi(url: string | null = null) {
+  // Состояние для данных списков отткрытой карточки.
+  // Меняются, когда мы получаем какой-то объект для отображения.
+  // Могут быть какие кгодно списки, берет только нужные для определнной карточки.
+  // Например, для Героя - Фильмы, Транспорт и Корабли.
   const [ arrState, dispatch ] = useReducer(arrReducer, { films: [], transport: [], starships: [] });
 
+  // Получаем отдельно всех персонажей, расы и планеты.
+  // Дальше мы создаем и готовим масив персонажей или отдельного персонажа, включив в него уже готовые полученые даныне.
   const { data: heroesRaw, isLoading: heroesLoading } = useSWR('people/', () => swapi.getPeople());
   const { data: planetsRaw, isLoading: planetsLoading } = useSWR('planets/', () => swapi.getPlanets());
   const { data: racesRaw, isLoading: racesLoading } = useSWR('species/', () => swapi.getRaces());
   const { data: singleDataRaw, isLoading: dataLoading } = useSWR(url, () => swapi.getSingleData(url));
 
-  // Выше мы получаем отдельно всех персонажей, расы и планеты.
-  // Дальше мы создаем и готовим масив персонажей или отдельного персонажа, включив в него уже готовые полученые даныне.
-
+  // Переменные для потготовленных данных, переопределяем типы для удобного использования.
   let heroes: Array<Omit<Hero, 'species'> & {id: string, species: string}> = [];
   let singleData: Omit<Hero, 'species'> & {id: string, species: string} | undefined = undefined;
 
@@ -90,7 +94,7 @@ export function useSwapi(url: string | null = null) {
   }, [singleDataRaw]);
 
 
-  // ВАРИАНТ. Лишний стейт ввутри хука.
+  // ВАРИАНТ. (Лишний стейт внутри хука)
   // Списки - возвращаем полученный массив
   // Отдельный персонаж (или другая сущность) - возвращаем функцию-геттер
   // Геттер принимает линк и ставит его в стейт
@@ -98,17 +102,9 @@ export function useSwapi(url: string | null = null) {
   // Геттер ждет и получает данные
   // Обрабатывает их и возвращает вместе с Loading
 
-  // ВАРИАНТ. Получаем данные, которые могут быть не нужны.
+  // ВАРИАНТ. (Получаем данные, которые могут быть не нужны)
   // Получаем массивы всех сущностей отдельными SWR
   // Собираем нужные обекты через функции, используя все полученные массивы
-
-  // ВАРИАНТ. Слишком закручено.
-  // Еще один useSWR, который получает масив масивов списков Фильмов, Транспорта, Кораблей
-  // useEffect (или просто if?), который зависит от даних отдельного героя/сущности
-  // Когда герой получен еффект берет из него мисивы ссылок и ложит в стейт
-  // Стейт запускает SWR
-  // Когда даные получены - только тогда запускается потготовка отдельного героя
-  // Берем данные из результатов двух SWR
 
 
   return { heroes, singleData, heroesLoading, dataLoading }
