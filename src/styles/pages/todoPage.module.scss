@@ -2,6 +2,7 @@
 
 .todoApp {
   display: flex;
+  flex-wrap: wrap;
   gap: vw(20);
 }
 
@@ -37,4 +38,16 @@
   border-radius: vw(25);
   padding: vw(20) vw(25);
   background-color: #E6E7EB;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .side {
+    width: 100%;
+  }
+
+  .details {
+    min-height: vw(200);
+  }
+
 }

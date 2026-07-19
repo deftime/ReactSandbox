@@ -34,3 +34,27 @@ nav.nav {
     }
   }
 }
+
+@media screen and (max-width: 500px) {
+
+  nav.nav {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 50%;
+    height: calc(100vh - vw(80));
+    top: vw(80);
+    right: 0;
+    background-color: #fff;
+    border-left: $greenlight 1px solid;
+    border-bottom: $greenlight 1px solid;
+    transition: 0.5s ease;
+    transform: translateX(100%);
+    z-index: 10;
+    &.open {
+      transform: translateX(0);
+    }
+  }
+
+}

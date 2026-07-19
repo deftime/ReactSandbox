@@ -7,6 +7,7 @@
   border: vw(5) solid #fff;
   border-radius: vw(15);
   background-color: $greenlight;
+  width: vw(515);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   transition: 0.5s ease;
   cursor: pointer;
@@ -18,7 +19,7 @@
     flex-grow: 1;
   }
   .ava {
-    width: vw(150);
+    width: auto;
     height: vw(150);
     border: vw(8) solid #fff;
     border-radius: 50%;
@@ -47,7 +48,6 @@
     padding: vw(10) vw(15);
     border-radius: vw(5);
     background-color: #fff;
-    width: vw(300);
     span {
       color: $bluelight;
     }
@@ -62,4 +62,23 @@
       border-width: vw(1);
     }
   }
+}
+
+@media screen and (max-width: 500px) {
+
+  .hero {
+    width: auto;
+    .side:first-child {
+      width: vw(120);
+    }
+    .ava {
+      height: vw(120);
+      border-width: vw(5);
+    }
+    .name {
+      font-size: vw(20);
+      line-height: vw(25);
+    }
+  }
+
 }

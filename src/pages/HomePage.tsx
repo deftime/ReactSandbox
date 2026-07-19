@@ -13,7 +13,7 @@ export function HomePage() {
     <section className={cls.homePage}>
       <Brick img={'/img/app.png'} title={'App'} />
       <Brick img={'/img/save.png'} title={'Save'} />
-      <Brick img={'/img/database.png'} title={'Data'} onClick={goTo} />
+      <Brick img={'/img/planets.png'} title={<>StarWars<br/>Heroes</>} onClick={goTo} />
     </section>
   )
 }

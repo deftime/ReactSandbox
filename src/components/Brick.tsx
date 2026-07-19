@@ -1,9 +1,10 @@
+import type { ReactNode } from "react";
 import clsx from "clsx";
 import cls from '@/styles/modules/brick.module.scss';
 
 type BrickProps = {
   img: string,
-  title: string,
+  title: string | ReactNode,
   onClick?: () => void
 }
 

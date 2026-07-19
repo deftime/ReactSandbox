@@ -1,5 +1,11 @@
 @use 'variables' as *;
 
+#root {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
 .mobile {
   display: none;
 }
@@ -10,4 +16,12 @@
 
 .main {
   padding: vw(20) vw(30);
+}
+
+@media screen and (max-width: 500px) {
+
+  .mobile {
+    display: block;
+  }
+
 }

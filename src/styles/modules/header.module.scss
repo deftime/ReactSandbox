@@ -6,3 +6,35 @@ header.header {
   padding: 0 vw(30);
   border-bottom: 1px solid $bluelight;
 }
+
+@media screen and (max-width: 500px) {
+
+  header .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: vw(25) 0;
+    width: vw(55);
+    margin-left: auto;
+    span {
+      display: block;
+      height: vw(3);
+      background-color: $greenlight;
+      transform-origin: left;
+      transition: 0.3s ease;
+      width: 100%;
+    }
+    &.open {
+      span:nth-child(1) {
+        transform: rotate(40deg) translate(vw(-7), vw(0));
+      }
+      span:nth-child(2) {
+        width: 0;
+      }
+      span:nth-child(3) {
+        transform: rotate(-40deg) translate(vw(-8), vw(0));
+      }
+    }
+  }
+
+}

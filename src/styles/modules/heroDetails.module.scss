@@ -69,3 +69,38 @@
 .transports {
   background-color: $green;
 }
+
+@media screen and (max-width: 500px) {
+
+  .heroDetails {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    gap: vw(10);
+  }
+
+  .pic {
+    height: vw(200);
+    img {
+      object-position: top;
+    }
+  }
+
+  .details {
+    grid-column: span 1;
+    .line:nth-child(n+2) {
+      margin-top: vw(10);
+    }
+  }
+
+  .data {
+    padding: vw(10) vw(15) vw(20) vw(15);
+    .title {
+
+    }
+  }
+
+  .transports {
+    grid-column: span 2;
+  }
+
+}

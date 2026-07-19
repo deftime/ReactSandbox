@@ -3,8 +3,9 @@
 .taskDetails {
   .top {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: flex-start;
+    gap: vw(50);
     margin-bottom: vw(40);
     .taskTitle {
       font-size: vw(30);
@@ -35,4 +36,18 @@
       background-color: $green;
     }
   }
+}
+
+@media screen and (max-width: 500px) {
+
+  .taskDetails {
+    .top {
+      gap: vw(20);
+      .taskTitle {
+        font-size: vw(25);
+        line-height: vw(30);
+      }
+    }
+  }
+
 }
