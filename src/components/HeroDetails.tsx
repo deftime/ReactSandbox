@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import cls from '@/styles/modules/heroDetails.module.scss';
+import { BASE_URL } from "@/app/router.ts";
 import { useSwapi } from "@/hooks/useSwapi.ts";
 import { Loader } from "@/components/Loader.tsx";
 
@@ -10,15 +11,13 @@ type HeroDetailsProps = {
 export function HeroDetails(props: HeroDetailsProps) {
   const { singleData, dataLoading } = useSwapi(props.url);
 
-  //console.log(singleData);
-
   return (
     <div className={cls.heroDetails}>
       {dataLoading &&  <Loader variant={'absolute'} size={'big'} />}
       {!dataLoading && singleData && (
         <>
           <div className={cls.pic}>
-            <img src={`/img/heroes/${singleData.name}.jpg`} alt=""/>
+            <img src={`${BASE_URL}img/heroes/${singleData.name}.jpg`} alt=""/>
           </div>
           <div className={cls.details}>
             <div className={cls.line}><span>Race: </span>{singleData.species}</div>

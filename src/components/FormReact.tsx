@@ -1,9 +1,9 @@
+import { useState } from "react";
+import { type SubmitHandler, useForm } from "react-hook-form";
+import { PopupLayout } from "@/components/PopupLayout.tsx";
 import clsx from "clsx";
 import cls from "@/styles/forms/forms.module.scss";
 import clsSpec from "@/styles/forms/formReact.module.scss";
-import { type SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
-import { PopupLayout } from "@/components/PopupLayout.tsx";
 
 type FormReactProps = {
   title?: string

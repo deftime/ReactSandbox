@@ -5,24 +5,26 @@ import { FormsPage } from "@/pages/FormsPage.tsx";
 import { TodoPage } from "@/pages/TodoPage.tsx";
 import { SwapiPage } from "@/pages/SwapiPage.tsx";
 
+export const BASE_URL = import.meta.env.PROD ? '/ReactSandbox/' : '/';
+
 export const router = createBrowserRouter([
   {
     Component: App,
     children: [
       {
-        path: '/',
+        path: BASE_URL,
         Component: HomePage
       },
       {
-        path: '/forms',
+        path: BASE_URL + 'forms',
         Component: FormsPage
       },
       {
-        path: '/todo',
+        path: BASE_URL + 'todo',
         Component: TodoPage
       },
       {
-        path: '/swapi',
+        path: BASE_URL + 'swapi',
         Component: SwapiPage
       }
     ]

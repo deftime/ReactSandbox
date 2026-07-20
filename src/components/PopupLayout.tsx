@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "motion/react";
-import type { ReactNode } from "react";
 import closeIcon from '@/assets/close.svg';
 import clsx from "clsx";
 import cls from '@/styles/layouts/popupLayout.module.scss';

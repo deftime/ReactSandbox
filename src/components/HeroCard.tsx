@@ -1,4 +1,5 @@
 import cls from '@/styles/modules/heroCard.module.scss';
+import { BASE_URL } from "@/app/router.ts";
 
 type HeroCardProps = {
   name: string
@@ -11,7 +12,7 @@ type HeroCardProps = {
 }
 
 export function HeroCard(props: HeroCardProps) {
-  const avaImg = `/img/heroes/${props.name}_face.jpg`;
+  const avaImg = `${BASE_URL}img/heroes/${props.name}_face.jpg`;
 
   return (
     <div className={cls.hero} onClick={props.onOpen}>

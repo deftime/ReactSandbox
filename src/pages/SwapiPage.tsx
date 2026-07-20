@@ -36,8 +36,6 @@ export function SwapiPage() {
   const [ state, dispatch ] = useReducer(stateReducer, { isOpen: false, heroName: '', url: null });
   const { heroes, heroesLoading } = useSwapi();
 
-  //console.log(state);
-
   return (
     <>
       <section className={cls.swapiPage}>

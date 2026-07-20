@@ -1,9 +1,9 @@
+import { useEffect } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { type TaskTypeClear, type TaskType, type TaskTypeClearId } from "@/hooks/useTasks.ts";
 import clsx from "clsx";
 import cls from '@/styles/forms/formAddTask.module.scss';
 import forms from '@/styles/forms/forms.module.scss';
-import { useEffect } from "react";
 
 type FormAddTaskProps = {
   pushData: (data: TaskTypeClearId) => void
