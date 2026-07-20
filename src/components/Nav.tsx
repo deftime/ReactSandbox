@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
-import clsx from "clsx";
 import { useNavMenu } from "@/hooks/useNavMenu.ts";
+import { BASE_URL } from "@/app/router.ts";
+import clsx from "clsx";
 import cls from "@/styles/modules/nav.module.scss";
 
 type NavProps = {
@@ -21,6 +22,7 @@ export function Nav(props: NavProps) {
       {menu.map((elem)=>{
         return (
           <NavLink to={elem.url}
+                   end={elem.url === BASE_URL}
                    className={({ isActive }) => isActive ? clsx(cls.navItem, cls.active) : clsx(cls.navItem)}
                    onClick={handleClick}
                    key={elem.id}>
