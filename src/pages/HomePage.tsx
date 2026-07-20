@@ -7,7 +7,7 @@ export function HomePage() {
   const navigate = useNavigate();
 
   const goTo = () => {
-    navigate('/swapi')
+    navigate(`${BASE_URL}swapi`)
   }
 
   return (
