@@ -1,11 +1,13 @@
 import { mainMenu } from "@/store/navMenu.ts";
-
-// Тут казалось бы мы просто возвращаем статические данные.
-// Но суть хука в том, что он возвращает меню и берет на себя логику где его брать.
-// Например, завтра мы можем уже получать структуру меню из API.
+import { BASE_URL} from "@/app/router.ts";
 
 export function useNavMenu() {
-  const menu = mainMenu;
+  // Готовим правильную структуру меню перед возвратом.
+  // Заменяем строку линка с базовим корнем.
+  const menu = mainMenu.map(item => {
+    const newUrl = item.url.slice(1);
+    return { ...item, url: BASE_URL + newUrl }
+  });
 
   return { menu }
 }

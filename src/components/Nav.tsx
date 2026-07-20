@@ -1,6 +1,6 @@
+import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { useNavMenu } from "@/hooks/useNavMenu.ts";
-import { NavLink } from "react-router-dom";
 import cls from "@/styles/modules/nav.module.scss";
 
 type NavProps = {
