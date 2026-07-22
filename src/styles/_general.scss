@@ -18,6 +18,20 @@
   padding: vw(20) vw(30);
 }
 
+.btn-link {
+  display: block;
+  font-size: vw(15);
+  line-height: vw(20);
+  font-weight: 700;
+  color: #fff;
+  padding: vw(10) vw(15);
+  border: none;
+  border-radius: vw(5);
+  width: fit-content;
+  background-color: $blue;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 500px) {
 
   .mobile {

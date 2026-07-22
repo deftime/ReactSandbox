@@ -20,5 +20,10 @@ export const mainMenu: MainMenuElem[] = [
     id: 4,
     title: 'Swapi',
     url: '/swapi'
+  },
+  {
+    id: 5,
+    title: 'Law Online',
+    url: '/lawonline'
   }
 ]

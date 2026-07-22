@@ -1,7 +1,8 @@
-import { Nav } from "@/components/Nav.tsx";
-import cls from '@/styles/modules/header.module.scss'
-import clsx from "clsx";
 import { useState } from "react";
+import clsx from "clsx";
+import { Nav } from "@/components/Nav.tsx";
+import { LogInStatus } from "@/components/LogInStatus.tsx";
+import cls from '@/styles/modules/header.module.scss'
 
 export function Header() {
   // Открытие мобильного варианта меню
@@ -10,6 +11,7 @@ export function Header() {
   return (
     <header className={cls.header}>
       <Nav isOpenMobile={openMobile} onClick={() => setOpen(false)} />
+      <LogInStatus />
       <div className={ clsx(cls.burger, 'mobile', openMobile && cls.open) }
            onClick={() => {
              setOpen(!openMobile);
